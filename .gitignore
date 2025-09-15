@@ -25,16 +25,3 @@ dist-ssr
 *.sw?
 
 # System Files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-*.lnk   
-.env
-.env.local
-.env.*.local    
