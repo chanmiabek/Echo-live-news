@@ -12,6 +12,7 @@ const NewsBoard = ({category}) => {
           `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=1ec1c0f98260447fbd95c07fcc5192ea`
         );
         const data = await res.json();
+        
         setArticles(Array.isArray(data.articles) ? data.articles : []);
       } catch (err) {
         console.error(err);
