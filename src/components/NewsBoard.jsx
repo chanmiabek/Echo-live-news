@@ -1,6 +1,5 @@
 import  { useEffect, useState } from 'react';
 import NewsItem from '../components/NewsItems';
-
 const NewsBoard = ({category}) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
