@@ -1,7 +1,7 @@
 import  { useEffect, useState } from 'react';
 import NewsItem from '../components/NewsItems';
 
-const apiKey = import.meta.env.VITE_API_KEY;
+const VITE_API_KEY = import.meta.env.VITE_API_KEY;
 
 const NewsBoard = ({category}) => {
   const [articles, setArticles] = useState([]);
@@ -10,12 +10,12 @@ const NewsBoard = ({category}) => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        if (!apiKey) {
+        if (!VITE_API_KEY) {
           throw new Error('VITE_API_KEY is not configured');
         }
 
         const res = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`
+          `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${VITE_API_KEY}`
         );
         const data = await res.json();
         
