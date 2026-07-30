@@ -8,7 +8,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className="app-shell">
       <Navbar setCategory={setCategory} />
       <NewsBoard category={category} />
     </div>

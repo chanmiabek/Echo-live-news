@@ -1,5 +1,8 @@
 import  { useEffect, useState } from 'react';
 import NewsItem from '../components/NewsItems';
+
+const apiKey = import.meta.env.VITE_API_KEY;
+
 const NewsBoard = ({category}) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -7,8 +10,12 @@ const NewsBoard = ({category}) => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
+        if (!apiKey) {
+          throw new Error('VITE_API_KEY is not configured');
+        }
+
         const res = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=1ec1c0f98260447fbd95c07fcc5192ea`
+          `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`
         );
         const data = await res.json();
         
@@ -24,15 +31,16 @@ const NewsBoard = ({category}) => {
   }, [category]);
 
   return (
-    <div>
-      <h2 className="text-center">
+    <main>
+      <h2 className="text-center news-heading">
         Latest <span className="badge bg-danger">News</span>
       </h2>
 
       {loading ? (
         <p className="text-center">Loading...</p>
       ) : articles.length > 0 ? (
-        articles.map((news, index) => (
+          <div className="news-grid">
+            {articles.map((news, index) => (
           <NewsItem
             key={index}
             title={news.title}
@@ -40,11 +48,12 @@ const NewsBoard = ({category}) => {
             src={news.urlToImage}
             url={news.url}
           />
-        ))
+            ))}
+          </div>
       ) : (
         <p className="text-center">No articles found.</p>
       )}
-    </div>
+    </main>
   );
 };
 

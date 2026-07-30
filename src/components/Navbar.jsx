@@ -1,13 +1,14 @@
 import React from "react";
+import NewsLogo from "../assets/news.png";
 
 const Navbar = ({ setCategory }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div className="container-fluid">
-        <span className="navbar-brand">
-
-          <span  className="badge bg-light text-dark fs-4">EMNews</span>
-        </span>
+        <a className="navbar-brand d-flex align-items-center gap-2" href="/" aria-label="Media News home">
+          <img className="site-logo" src={NewsLogo} alt="" />
+          <span className="brand-name">MEDIA NEWS</span>
+        </a>
 
         <button
           className="navbar-toggler"
